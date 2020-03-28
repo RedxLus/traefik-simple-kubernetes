@@ -1,0 +1,59 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: reloj
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reloj
+  template:
+    metadata:
+      labels:
+        app: reloj
+    spec:
+      containers:
+      - name: reloj
+        image: redxlus/just-template-http:reloj
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reloj
+spec:
+  ports:
+  - name: http
+    targetPort: 80
+    port: 80
+  selector:
+    app: reloj
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: calculadora
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calculadora
+  template:
+    metadata:
+      labels:
+        app: calculadora
+    spec:
+      containers:
+      - name: calculadora
+        image: redxlus/just-template-http:calculadora
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: calculadora
+spec:
+  ports:
+  - name: http
+    targetPort: 80
+    port: 80
+  selector:
+    app: calculadora
