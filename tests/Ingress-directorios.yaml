@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-varios-directorios
+spec:
+ rules: 
+  - host: midominio.com
+    paths:
+    - path: /nuestro-reloj
+      backend:
+       serviceName: nombre-de-nuestro-service-uno
+       servicePort: 80
+    - path: /aplicacion-de-calculadora
+      backend:
+       serviceName: nombre-de-nuestro-service-dos
+       servicePort: 80
