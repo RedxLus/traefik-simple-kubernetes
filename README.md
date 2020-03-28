@@ -20,7 +20,7 @@ First you need to clone this repository:
 Now you MUST change your domain in the <b>traefik-Ingress-dashboard.yaml</b> and CAN made some changes in the configuration <b>traefik-configmap.yaml</b>.
   
 When you have everything ready now you have to apply in your Kuberentes Cluster. The files are going to deploy in the Kube-system namespace.  
-`kubectl apply -f traefik-simple-kubernetes/*`
+`kubectl apply -f traefik-simple-kubernetes/V1.7/*`
 
 And no more. Just check the Public IP of the LoadBalancer of Traefik and modify your domain or subdomain with it to access.  
 `kubectl get service release-name-traefik -n kube-system -w`
