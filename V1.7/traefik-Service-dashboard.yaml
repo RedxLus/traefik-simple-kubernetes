@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: traefik
+  name: release-name-traefik-dashboard
+  namespace: kube-system
+spec:
+  ports:
+  - name: dashboard-http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: traefik
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

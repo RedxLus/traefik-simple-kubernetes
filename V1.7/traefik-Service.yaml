@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: traefik
+  name: release-name-traefik
+  namespace: kube-system
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: https
+    nodePort: 32603
+    port: 443
+    protocol: TCP
+    targetPort: https
+  - name: http
+    nodePort: 30920
+    port: 80
+    protocol: TCP
+    targetPort: http
+  selector:
+    app: traefik
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer: {}

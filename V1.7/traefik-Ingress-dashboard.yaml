@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  creationTimestamp: null
+  generation: 1
+  labels:
+    app: traefik
+  name: release-name-traefik-dashboard
+  namespace: kube-system
+spec:
+  rules:
+  - host: subdomain.domain.com
+    http:
+      paths:
+      - backend:
+          serviceName: release-name-traefik-dashboard
+          servicePort: dashboard-http
+status:
+  loadBalancer: {}
